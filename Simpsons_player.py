@@ -27,7 +27,7 @@ def choose_episode():
 
 	episode=random.choice(season_episodes)
 
-	chosen_episode="'"+season_path+"/"+episode+"'"
+	chosen_episode="\""+season_path+"/"+episode+"\""
 	return chosen_episode
 
 n=args.num_episodes
@@ -37,7 +37,8 @@ for i in range(n):
 
 
 vlc_path="/Applications/VLC.app/Contents/MacOS/VLC"
-vlc_command=vlc_path +" "+ playlist
+vlc_command=(vlc_path +" "+ playlist).strip()
+
 print(vlc_command)
 
 subprocess.run(vlc_command, shell=True, check=True)
