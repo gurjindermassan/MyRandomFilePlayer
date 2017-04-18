@@ -9,17 +9,17 @@ import argparse
 
 parser=argparse.ArgumentParser()
 parser.add_argument("-n", "--num_episodes", help="Choose the number of episodes to play.",type=int,default=2)
+parser.add_argument("-a","--ad_time", help="Select Adventure Time files.", action='store_true')
+parser.add_argument("-s","--simpsons", help="Select Simpsons files.", action='store_true')
 args=parser.parse_args()
 
+def choose_episode(path):
 
-def choose_episode():
-	simpsons_path="/Users/gurjindermassan/Desktop/The Simpsons/"
-
-	all_seasons=os.listdir(simpsons_path)
+	all_seasons=os.listdir(path)
 	all_seasons.remove(".DS_Store")
 
 	season=random.choice(all_seasons)
-	season_path=simpsons_path+season
+	season_path=path+season
 
 	season_episodes=os.listdir(season_path)
 	if ".DS_Store" in season_episodes:
@@ -30,10 +30,19 @@ def choose_episode():
 	chosen_episode="\""+season_path+"/"+episode+"\""
 	return chosen_episode
 
+adventure_path="/Users/gurjindermassan/Desktop/Adventure Time/"
+simpsons_path="/Users/gurjindermassan/Desktop/The Simpsons/"
+
+if args.ad_time:
+	path=adventure_path
+	
+elif args.simpsons:
+	path=simpsons_path
+
 n=args.num_episodes
 playlist=""
 for i in range(n):
-	playlist=playlist+ choose_episode()+" "
+	playlist=playlist+ choose_episode(path)+" "
 
 
 vlc_path="/Applications/VLC.app/Contents/MacOS/VLC"
