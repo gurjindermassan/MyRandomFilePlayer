@@ -35,7 +35,7 @@ simpsons_path="/Users/gurjindermassan/Desktop/The Simpsons/"
 
 if args.ad_time:
 	path=adventure_path
-	
+
 elif args.simpsons:
 	path=simpsons_path
 
@@ -46,7 +46,7 @@ for i in range(n):
 
 
 vlc_path="/Applications/VLC.app/Contents/MacOS/VLC"
-vlc_command=(vlc_path +" "+ playlist).strip()
+vlc_command=(vlc_path +" --play-and-exit "+ playlist).strip()
 
 print(vlc_command)
 
