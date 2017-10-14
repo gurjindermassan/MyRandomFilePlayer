@@ -46,7 +46,7 @@ for i in range(n):
 
 
 vlc_path="/Applications/VLC.app/Contents/MacOS/VLC"
-vlc_command=(vlc_path +" --play-and-exit "+ playlist).strip()
+vlc_command=(vlc_path +" --play-and-exit --fullscreen "+ playlist).strip()
 
 print(vlc_command)
 
