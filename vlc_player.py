@@ -9,8 +9,8 @@ import argparse
 
 parser=argparse.ArgumentParser()
 parser.add_argument("-n", "--num_episodes", help="Choose the number of episodes to play.",type=int,default=2)
-parser.add_argument("-a","--ad_time", help="Select Adventure Time files.", action='store_true')
-parser.add_argument("-s","--simpsons", help="Select Simpsons files.", action='store_true')
+parser.add_argument("-p", "--path", help="Path to directory containing season directories.", required=True)
+
 args=parser.parse_args()
 
 def choose_episode(path):
@@ -30,19 +30,10 @@ def choose_episode(path):
 	chosen_episode="\""+season_path+"/"+episode+"\""
 	return chosen_episode
 
-adventure_path="/Users/gurjindermassan/Desktop/Adventure Time/"
-simpsons_path="/Users/gurjindermassan/Desktop/The Simpsons/"
-
-if args.ad_time:
-	path=adventure_path
-
-elif args.simpsons:
-	path=simpsons_path
-
 n=args.num_episodes
 playlist=""
 for i in range(n):
-	playlist=playlist+ choose_episode(path)+" "
+	playlist=playlist+ choose_episode(args.path)+" "
 
 
 vlc_path="/Applications/VLC.app/Contents/MacOS/VLC"
